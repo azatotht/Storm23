@@ -145,6 +145,7 @@ byte SelfTestStateToCalloutMap[] = {
 #define SOUND_EFFECT_LOOP_LIT                           18
 #define SOUND_EFFECT_INLANE                             19
 #define SOUND_EFFECT_INLANE_LIT                         20
+#define SOUND_EFFECT_OUTLANE_UNLIT                      19
 #define SOUND_EFFECT_STANDUP                            21
 #define SOUND_EFFECT_STANDUP_LIT                        22
 #define SOUND_EFFECT_SAUCER_REJECTED                    23
@@ -4375,8 +4376,8 @@ void HandleGamePlaySwitches(byte switchHit) {
 
     case SW_LEFT_SLING_BOTTOM:
     case SW_RIGHT_SLING_BOTTOM:
-      if (CurrentTime < (BallSearchSolenoidFireTime[BALL_SEARCH_LEFT_SLING_INDEX] + 150)) break;
-      if (CurrentTime < (BallSearchSolenoidFireTime[BALL_SEARCH_RIGHT_SLING_INDEX] + 150)) break;
+     //if (CurrentTime < (BallSearchSolenoidFireTime[BALL_SEARCH_LEFT_SLING_INDEX] + 150)) break;
+     //if (CurrentTime < (BallSearchSolenoidFireTime[BALL_SEARCH_RIGHT_SLING_INDEX] + 150)) break;
       CurrentScores[CurrentPlayer] += PlayfieldMultiplier * 10;
       PlaySoundEffect(SOUND_EFFECT_SLING_SHOT);
       LastSwitchHitTime = CurrentTime;
@@ -4581,7 +4582,7 @@ void HandleGamePlaySwitches(byte switchHit) {
 
     case SW_OUTLANES_BOTTOM:
       if (BallSaveEndTime) BallSaveEndTime += 3000;
-//      PlaySoundEffect(SOUND_EFFECT_OUTLANE_UNLIT);
+      PlaySoundEffect(SOUND_EFFECT_OUTLANE_UNLIT);
       CurrentScores[CurrentPlayer] += PlayfieldMultiplier * 5000;
       LastSwitchHitTime = CurrentTime;
       if (BallFirstSwitchHitTime == 0) BallFirstSwitchHitTime = CurrentTime;
