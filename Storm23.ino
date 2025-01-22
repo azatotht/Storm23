@@ -4583,7 +4583,7 @@ void HandleGamePlaySwitches(byte switchHit) {
     case SW_OUTLANES_BOTTOM:
       if (BallSaveEndTime) BallSaveEndTime += 3000;
       PlaySoundEffect(SOUND_EFFECT_OUTLANE_UNLIT);
-      CurrentScores[CurrentPlayer] += PlayfieldMultiplier * 5000;
+      CurrentScores[CurrentPlayer] += PlayfieldMultiplier * 10000;
       LastSwitchHitTime = CurrentTime;
       if (BallFirstSwitchHitTime == 0) BallFirstSwitchHitTime = CurrentTime;
       break;
